@@ -78,6 +78,7 @@ export class Server extends EventEmitter {
      * ```{
      *   requestAuthentication: Boolean,
      *   upstreamProxyUrl: String,
+     *   extraConnectHeaders: Object,
      *   customResponseFunction: Function
      * }```
      * If `upstreamProxyUrl` is false-ish value, no upstream proxy is used.
@@ -298,6 +299,10 @@ export class Server extends EventEmitter {
                 // If not authenticated, request client to authenticate
                 if (funcResult && funcResult.requestAuthentication) {
                     throw new RequestError(funcResult.failMsg || 'Proxy credentials required.', 407);
+                }
+
+                if (funcResult && funcResult.extraConnectHeaders) {
+                    handlerOpts.extraConnectHeaders = funcResult.extraConnectHeaders;
                 }
 
                 if (funcResult && funcResult.upstreamProxyUrl) {

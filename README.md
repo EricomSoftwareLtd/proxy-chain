@@ -44,7 +44,7 @@ const server = new ProxyChain.Server({
 
     // Custom function to authenticate proxy requests and provide the URL to chained upstream proxy.
     // It must return an object (or promise resolving to the object) with the following form:
-    // { requestAuthentication: Boolean, upstreamProxyUrl: String }
+    // { requestAuthentication: Boolean, upstreamProxyUrl: String, extraConnectHeaders: Object }
     // If the function is not defined or is null, the server runs in simple mode.
     // Note that the function takes a single argument with the following properties:
     // * request      - An instance of http.IncomingMessage class with information about the client request

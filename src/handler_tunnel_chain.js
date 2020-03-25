@@ -26,6 +26,7 @@ export default class HandlerTunnelChain extends HandlerBase {
             path: targetHost,
             headers: {
                 Host: targetHost,
+                ...this.extraConnectHeaders,
             },
         };
 
