@@ -48,7 +48,9 @@ var parseHostHeader = exports.parseHostHeader = function parseHostHeader(hostHea
 };
 
 // As per HTTP specification, hop-by-hop headers should be consumed but the proxy, and not forwarded
-var HOP_BY_HOP_HEADERS = ['Connection', 'Keep-Alive', 'Proxy-Authenticate', 'Proxy-Authorization', 'TE', 'Trailer', 'Transfer-Encoding', 'Upgrade'];
+var HOP_BY_HOP_HEADERS = ['Connection', 'Keep-Alive', 'Proxy-Authenticate',
+// 'Proxy-Authorization', // in Shield we want it to forward. if we don't then it won't be set on the request anyway
+'TE', 'Trailer', 'Transfer-Encoding', 'Upgrade'];
 
 var HOP_BY_HOP_HEADERS_REGEX = new RegExp('^(' + HOP_BY_HOP_HEADERS.join('|') + ')$', 'i');
 
