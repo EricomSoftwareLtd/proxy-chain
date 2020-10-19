@@ -36,7 +36,7 @@ const HOP_BY_HOP_HEADERS = [
     'Connection',
     'Keep-Alive',
     'Proxy-Authenticate',
-    'Proxy-Authorization',
+    // 'Proxy-Authorization', // in Shield we want it to forward. if we don't then it won't be set on the request anyway
     'TE',
     'Trailer',
     'Transfer-Encoding',
